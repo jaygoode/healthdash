@@ -20,3 +20,7 @@ beforeEach(async () => {
 afterAll(async () => {
   await pool.close();
 });
+
+afterEach(async () => {
+  await pool.deleteTable("testDB");
+});

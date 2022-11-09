@@ -33,6 +33,10 @@ const getUserById = async (id: string) => {
   }
 };
 
+const deleteAll = async (database: string) => {
+  return await pool.query("delete * from users");
+};
+
 export default {
   getAllUsers,
   createOne,

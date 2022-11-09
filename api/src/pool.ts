@@ -8,13 +8,16 @@ class CustomPool {
   }
   close() {
     if (this.pool) {
-      return this.pool.end();
+      return this.pool?.end();
     }
   }
   query(sql: String, params?: any) {
     if (this.pool) {
       return this.pool.query(sql, params);
     }
+  }
+  deleteTable(name: string) {
+    return this.pool?.query("delete from $1", [name]);
   }
 }
 
