@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   database: "healthdashdb",
   synchronize: true,
   logging: false,
-  entities: [User, Note],
+  entities: ["./entities/*"],
   migrations: [],
   subscribers: [],
 });

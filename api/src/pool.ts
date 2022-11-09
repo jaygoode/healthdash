@@ -2,7 +2,7 @@ import pg from "pg";
 
 class CustomPool {
   pool: pg.Pool | null = null;
-  connect(options: pg.Poolconfig) {
+  connect(options: pg.PoolConfig) {
     this.pool = new pg.Pool(options);
     return this.pool.connect();
   }
@@ -11,7 +11,7 @@ class CustomPool {
       return this.pool?.end();
     }
   }
-  query(sql: String, params?: any) {
+  query(sql: string, params?: any) {
     if (this.pool) {
       return this.pool.query(sql, params);
     }

@@ -2,20 +2,29 @@ import express from "express";
 import app from "./app";
 import { SERVER_URI } from "./util/secrets";
 import pool from "./pool";
+import { AppDataSource } from "./data-source";
 
 const serverUrl = SERVER_URI;
 
-pool
-  .connect({
-    database: "",
-    host: "localhost",
-    user: "johnny",
-    port: 5432,
-  })
+AppDataSource.initialize()
   .then(async () => {
-    const serverStartMsg = "Express server started on port: ",
-      port = process.env.PORT;
-  });
+    console.log(`Express server started on port: ${process.env.PORT}`);
+  })
+  .catch((error) => console.log(error));
+
+//without typeORM below
+
+// pool
+//   .connect({
+//     database: "",
+//     host: "localhost",
+//     user: "johnny",
+//     port: 5432,
+//   })
+//   .then(async () => {
+//     const serverStartMsg = "Express server started on port: ",
+//       port = process.env.PORT;
+//   });
 
 app.listen(app.get("port"), () => {
   console.log(

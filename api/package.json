@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "starting:prod": "node dist/server.js",
+    "start:dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "watch-ts": "tsc -w",
+    "test": "jest --forceExit --detectOpenHandles --coverage --verbose false",
+    "watch-test": "npm run test -- --watchAll",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
+    "heroku-postbuild": "cd ../client/ && npm install && npm run build",
+    "start": "ts-node src/server.ts"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.12",
+    "cors": "^2.8.5"
+  }
+}

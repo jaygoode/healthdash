@@ -14,6 +14,9 @@ export class User {
   id: number;
 
   @Column({ width: 40 })
+  firstname: string;
+
+  @Column({ width: 40 })
   lastname: string;
 
   @Column()
