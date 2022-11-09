@@ -8,6 +8,18 @@ const createOne = async (user: User) => {
   );
 };
 
+const getUserById = async (id: string) => {
+  try {
+    const result = await pool.query(
+      "select * from students where students.id = $1",
+      [id]
+    );
+    return result?.rows;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 export default {
   createOne,
 };
