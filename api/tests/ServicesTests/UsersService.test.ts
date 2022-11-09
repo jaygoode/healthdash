@@ -22,5 +22,5 @@ afterAll(async () => {
 });
 
 afterEach(async () => {
-  await pool.deleteTable("testDB");
+  await pool.deleteTable("users");
 });

@@ -17,7 +17,7 @@ class CustomPool {
     }
   }
   deleteTable(name: string) {
-    return this.pool?.query("delete from $1", [name]);
+    return this.pool?.query("drop table $1", [name]);
   }
 }
 
