@@ -1,11 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { notEqual } from "assert";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToMany,
+  ManyToOne,
+} from "typeorm";
+import { Note } from "./noteEntity";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @Column()
+  @Column({ width: 40 })
   lastname: string;
 
   @Column()
@@ -16,4 +24,7 @@ export class User {
 
   @Column()
   weight: number;
+
+  @ManyToOne(() => Note, (note) => note.userId, { cascade: true })
+  noteId: Note;
 }
