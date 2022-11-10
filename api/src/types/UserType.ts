@@ -6,3 +6,11 @@ export interface User {
   weight: number;
   age: number;
 }
+
+export interface Note {
+  id?: number;
+  date: string;
+  content: string;
+  tags: string;
+  userId: number;
+}
