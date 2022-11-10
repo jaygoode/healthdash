@@ -10,7 +10,7 @@ import { User } from "./userEntity";
 
 @Entity()
 export class Note {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ width: 40 })
@@ -20,7 +20,7 @@ export class Note {
   content: string;
 
   @Column()
-  tags: string[];
+  tags: string;
 
   @ManyToOne(() => User, (user) => user.id)
   userId: User;

@@ -10,7 +10,7 @@ import { Note } from "./noteEntity";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ width: 40 })

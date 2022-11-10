@@ -6,8 +6,10 @@ const userRepository = AppDataSource.getRepository(User);
 
 const getAllUsers = async () => {
   try {
-    return userRepository.find();
+    const users = await userRepository.find();
+    return users;
   } catch (error: any) {
+    console.log(error);
     return error.message;
   }
 };
@@ -22,7 +24,7 @@ const createOne = async (user: User) => {
 
 const getUserById = async (id: number) => {
   try {
-    return userRepository.findOneBy({ id: id });
+    return await userRepository.findOneBy({ id: id });
   } catch (error: any) {
     return error.message;
   }
@@ -46,8 +48,12 @@ const deleteOne = async (id: number) => {
   }
 };
 
+//.querybuilder() for more complex methods, joins and stuff
+
 export default {
   getAllUsers,
   createOne,
   getUserById,
+  deleteOne,
+  updateOne,
 };
