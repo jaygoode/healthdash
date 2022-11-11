@@ -1,11 +1,12 @@
 import { Router } from "express";
-import notesController from "../controllers/notesController";
+import activitiesController from "../controllers/activitiesController";
 
 const activitiesRouter = Router();
 
 activitiesRouter.get("/", activitiesController.getAll);
-activitiesRouter.post("/", activitiesController.createNote);
-activitiesRouter.patch("/", activitiesController.updateNote);
-activitiesRouter.delete("/", activitiesController.deleteNote);
+activitiesRouter.get("/", activitiesController.getOneById);
+activitiesRouter.post("/", activitiesController.createActivity);
+activitiesRouter.patch("/", activitiesController.updateActivity);
+activitiesRouter.delete("/", activitiesController.deleteActivity);
 
 export default activitiesRouter;

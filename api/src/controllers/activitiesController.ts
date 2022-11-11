@@ -3,7 +3,16 @@ import activityServices from "../services/activityServices";
 
 const getAll = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const activities = await activityServices.getAllactivities();
+    const activities = await activityServices.getAllActivities();
+    return res.json(activities);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getOneById = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const activities = await activityServices.getActivityById(req.body.id);
     return res.json(activities);
   } catch (error) {
     return next(error);
@@ -54,6 +63,7 @@ const deleteActivity = async (
 
 export default {
   getAll,
+  getOneById,
   updateActivity,
   deleteActivity,
   createActivity,
