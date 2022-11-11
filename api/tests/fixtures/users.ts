@@ -1,4 +1,4 @@
-import { User } from "../../src/types/UserType";
+import { User } from "../../src/types/Types";
 
 export const user1: User = {
   firstname: "johnny",
