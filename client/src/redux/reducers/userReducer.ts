@@ -4,19 +4,21 @@ import { User, Credentials, UserReducerState } from "../../types/userTypes";
 const initialState: UserReducerState = {
   userList: [],
   currentUser: {
-    _id: "630a1ec68730e0a256ecf8dc",
+    id: "630a1ec68730e0a256ecf8dc",
+    username: "dragonaslayer1x",
+    age: 19,
+    weight: 75,
     firstname: "jason",
     lastname: "admin",
     email: "admin@gmail.com",
     password: "$2b$10$kBbRpmy2o4FLznWUv9qXLOvGsewlrKmLqLcJxnABHCJlvAOPEO7Li",
     role: "admin",
-    goingToEvent: "63063ad92f337a8229cfa2f4",
   },
 };
 
 export const getUsers = createAsyncThunk("getUsers", async () => {
   try {
-    const data = await fetch("https://ola-homepage-api.herokuapp.com/users");
+    const data = await fetch("https://localhost:5000/api/users");
     let result = await data.json();
     return result;
   } catch (error: any) {
@@ -29,16 +31,13 @@ export const updateUser = createAsyncThunk(
   async (update: Partial<User>) => {
     try {
       console.log(update);
-      const response = await fetch(
-        `https://ola-homepage-api.herokuapp.com/users/`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(update),
-        }
-      );
+      const response = await fetch(`https://localhost:5000/api/users/`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(update),
+      });
       const result = await response.json();
       return result;
     } catch (error: any) {
@@ -50,22 +49,19 @@ export const updateUser = createAsyncThunk(
 export const createUser = createAsyncThunk("createUser", async (user: User) => {
   const { firstname, lastname, email, password, role } = user;
   try {
-    const response = await fetch(
-      "https://ola-homepage-api.herokuapp.com/users",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname: firstname,
-          lastname: lastname,
-          password: password,
-          email: email,
-          role: role,
-        }),
-      }
-    );
+    const response = await fetch("https://localhost:5000/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname: firstname,
+        lastname: lastname,
+        password: password,
+        email: email,
+        role: role,
+      }),
+    });
     const result = await response.json();
     console.log(result);
     return result;
@@ -76,12 +72,9 @@ export const createUser = createAsyncThunk("createUser", async (user: User) => {
 
 export const deleteUser = createAsyncThunk("deleteUser", async (id: string) => {
   try {
-    const response = await fetch(
-      `https://ola-homepage-api.herokuapp.com/users/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await fetch(`https://localhost:5000/api/users/${id}`, {
+      method: "DELETE",
+    });
     const result = await response.json();
     return result;
   } catch (error: any) {
@@ -92,21 +85,18 @@ export const deleteUser = createAsyncThunk("deleteUser", async (id: string) => {
 export const login = createAsyncThunk(
   "login",
   async (credentials: Credentials) => {
-    const { email, password } = credentials;
+    const { username, password } = credentials;
     try {
-      const response = await fetch(
-        "https://ola-homepage-api.herokuapp.com/users/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            password: password,
-            email: email,
-          }),
-        }
-      );
+      const response = await fetch("https://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password: password,
+          username: username,
+        }),
+      });
       const result = await response.json();
       console.log(result);
       return result;
@@ -145,13 +135,13 @@ const userSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action: PayloadAction<User>) => {
         state.userList.map((user) => {
-          if (user._id === action.payload._id) {
+          if (user.id === action.payload.id) {
             user = action.payload;
             return user;
           }
           return state;
         });
-        if (state.currentUser && state.currentUser._id === action.payload._id) {
+        if (state.currentUser && state.currentUser.id === action.payload.id) {
           state.currentUser = action.payload;
         }
         return state;
