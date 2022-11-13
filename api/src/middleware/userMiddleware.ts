@@ -10,7 +10,7 @@ export const verifyCredentials = async (
   next: NextFunction
 ) => {
   const { email, password } = req.body;
-  const foundUser = await userRepository.findOne({ email: email });
+  //   const foundUser = await userRepository.findOne({ email: email });
   // if (foundUser) {
   //   const checkPassword = await foundUser.comparePassword(password)
   //   if (checkPassword) {

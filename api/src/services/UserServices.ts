@@ -1,4 +1,4 @@
-import pool from "../pool";
+// import pool from "../pool";
 import { User } from "../entities/userEntity";
 import { AppDataSource } from "../data-source";
 
