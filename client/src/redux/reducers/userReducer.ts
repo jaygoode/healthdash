@@ -47,7 +47,8 @@ export const updateUser = createAsyncThunk(
 );
 
 export const createUser = createAsyncThunk("createUser", async (user: User) => {
-  const { firstname, lastname, email, password, role } = user;
+  const { firstname, lastname, email, password, role, age, weight, username } =
+    user;
   try {
     const response = await fetch("https://localhost:5000/api/users", {
       method: "POST",
@@ -60,6 +61,9 @@ export const createUser = createAsyncThunk("createUser", async (user: User) => {
         password: password,
         email: email,
         role: role,
+        age: age,
+        username: username,
+        weight: weight,
       }),
     });
     const result = await response.json();
