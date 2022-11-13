@@ -37,7 +37,7 @@ export const updateUser = createAsyncThunk("updateUser", async (update) => {
 });
 
 export const createUser = createAsyncThunk("createUser", async (user) => {
-  const { firstname, lastname, email, password, role } = user;
+  //   const { firstname, lastname, email, password, role } = user;
   try {
     const response = await fetch(
       "https://ola-homepage-api.herokuapp.com/users",
@@ -47,11 +47,11 @@ export const createUser = createAsyncThunk("createUser", async (user) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstname: firstname,
-          lastname: lastname,
-          password: password,
-          email: email,
-          role: role,
+          //   firstname: firstname,
+          //   lastname: lastname,
+          //   password: password,
+          //   email: email,
+          //   role: role,
         }),
       }
     );
