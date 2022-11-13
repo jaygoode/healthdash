@@ -1,15 +1,17 @@
 export interface User {
-  _id: string;
+  id?: string;
+  username: string;
   firstname: string;
   lastname: string;
   email: string;
   password: string;
+  age: number;
+  weight: number;
   role: "customer" | "admin";
-  goingToEvent: string;
 }
 
 export interface Credentials {
-  email: string;
+  username: string;
   password: string;
 }
 
