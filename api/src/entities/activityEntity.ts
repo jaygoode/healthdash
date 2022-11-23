@@ -31,7 +31,7 @@ export class Activity {
   @Column()
   intensity: string;
 
-  @OneToMany(() => Note, (note) => note.activityId)
+  @ManyToOne(() => Note, (note) => note.activityId, { cascade: true })
   noteId: Note;
 
   @ManyToOne(() => User, (user) => user.id)
