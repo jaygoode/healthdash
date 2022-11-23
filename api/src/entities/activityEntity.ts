@@ -16,13 +16,16 @@ export class Activity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ width: 40 })
+  @Column({ type: "time" })
   startTime: string;
 
-  @Column({ width: 40 })
+  @Column({ type: "date" })
+  date: string;
+
+  @Column({ type: "time" })
   endTime: string;
 
-  @Column()
+  @Column({ type: "time" })
   duration: string;
 
   @Column()

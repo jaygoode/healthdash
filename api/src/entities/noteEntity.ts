@@ -13,8 +13,11 @@ export class Note {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ width: 40 })
+  @Column({ type: "date" })
   date: string;
+
+  @Column({ type: "time" })
+  time: string;
 
   @Column()
   content: string;
