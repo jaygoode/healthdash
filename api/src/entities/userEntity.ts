@@ -6,6 +6,7 @@ import {
   ManyToMany,
   ManyToOne,
 } from "typeorm";
+import { Activity } from "./activityEntity";
 import { Note } from "./noteEntity";
 
 @Entity()
@@ -39,4 +40,7 @@ export class User {
 
   @ManyToOne(() => Note, (note) => note.userId, { cascade: true })
   noteId: Note;
+
+  @ManyToOne(() => Activity, (activity) => activity.userId, { cascade: true })
+  activityId: Activity;
 }

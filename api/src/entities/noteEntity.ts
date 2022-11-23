@@ -5,6 +5,7 @@ import {
   ManyToMany,
   ManyToOne,
 } from "typeorm";
+import { Activity } from "./activityEntity";
 
 import { User } from "./userEntity";
 
@@ -13,10 +14,10 @@ export class Note {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", nullable: true })
   date: string;
 
-  @Column({ type: "time" })
+  @Column({ type: "time", nullable: true })
   time: string;
 
   @Column()
@@ -27,4 +28,7 @@ export class Note {
 
   @ManyToOne(() => User, (user) => user.id)
   userId: User;
+
+  @ManyToOne(() => Activity, (activity) => activity.noteId)
+  activityId: Activity;
 }

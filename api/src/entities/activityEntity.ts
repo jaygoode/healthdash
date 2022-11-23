@@ -19,14 +19,11 @@ export class Activity {
   @Column({ type: "time" })
   startTime: string;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", nullable: true })
   date: string;
 
-  @Column({ type: "time" })
+  @Column({ type: "time", nullable: true })
   endTime: string;
-
-  @Column({ type: "time" })
-  duration: string;
 
   @Column()
   type: string;
@@ -34,7 +31,7 @@ export class Activity {
   @Column()
   intensity: string;
 
-  @OneToMany(() => Note, (note) => note.id)
+  @OneToMany(() => Note, (note) => note.activityId)
   noteId: Note;
 
   @ManyToOne(() => User, (user) => user.id)

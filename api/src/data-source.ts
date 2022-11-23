@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { DataSource, DataSourceOptions, Migration } from "typeorm";
 import { User } from "./entities/userEntity";
 import { Note } from "./entities/noteEntity";
+import { Activity } from "./entities/activityEntity";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
   database: "healthdashdb",
   synchronize: true,
   logging: false,
-  entities: [User, Note],
+  entities: [User, Note, Activity],
   migrations: [],
   subscribers: [],
 });
