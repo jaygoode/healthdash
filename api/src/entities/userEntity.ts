@@ -14,6 +14,12 @@ export class User {
   id: number;
 
   @Column({ width: 40 })
+  username: string;
+
+  @Column({ width: 40 })
+  password: string;
+
+  @Column({ width: 40 })
   firstname: string;
 
   @Column({ width: 40 })
@@ -27,6 +33,9 @@ export class User {
 
   @Column()
   weight: number;
+
+  @Column()
+  role: "customer" | "admin";
 
   @ManyToOne(() => Note, (note) => note.userId, { cascade: true })
   noteId: Note;
