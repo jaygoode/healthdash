@@ -22,3 +22,16 @@ export const verifyCredentials = async (
   //   res.status(401).send('Incorrect credentials.')
   // }
 };
+
+export const verifyAdmin = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const user = req.body.user;
+  if (user?.role === "admin") {
+    next();
+  } else {
+    throw new Error();
+  }
+};
