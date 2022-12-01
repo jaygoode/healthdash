@@ -16,7 +16,7 @@ export class Note {
   id: number;
 
   @CreateDateColumn({ name: "create_time" })
-  createTime: Date;
+  dateCreated: Date;
 
   @Column()
   content: string;
