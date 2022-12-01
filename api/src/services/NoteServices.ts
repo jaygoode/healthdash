@@ -30,11 +30,11 @@ const getnoteById = async (id: number) => {
 };
 
 const updateOne = async (id: number, update: Partial<Note>) => {
-  const foundOne = await noteRepository.findOneBy({ id: id });
-  if (foundOne) {
+  try {
+    const foundOne = await noteRepository.findOneBy({ id: id });
     return await noteRepository.update({ id: id }, update);
-  } else {
-    return;
+  } catch (error: any) {
+    return error.message;
   }
 };
 

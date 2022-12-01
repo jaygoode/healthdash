@@ -23,7 +23,7 @@ export class Note {
   @Column()
   content: string;
 
-  @Column()
+  @Column({ array: true, nullable: true })
   tags: string;
 
   @ManyToOne(() => User, (user) => user.id)
