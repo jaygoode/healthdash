@@ -24,16 +24,10 @@ export interface Note {
 
 export interface Activity {
   id: number;
-
   createTime: Date;
-
   endTime: string;
-
   type: string;
-
   intensity: string;
-
   noteId: number;
-
   userId: number;
 }
