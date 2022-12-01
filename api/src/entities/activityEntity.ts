@@ -6,6 +6,7 @@ import {
   ManyToOne,
   OneToOne,
   OneToMany,
+  CreateDateColumn,
 } from "typeorm";
 
 import { User } from "./userEntity";
@@ -16,11 +17,8 @@ export class Activity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "time" })
-  startTime: string;
-
-  @Column({ type: "date", nullable: true })
-  date: string;
+  @CreateDateColumn({ name: "create_time" })
+  createTime: Date;
 
   @Column({ type: "time", nullable: true })
   endTime: string;
