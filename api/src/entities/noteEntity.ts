@@ -4,6 +4,7 @@ import {
   Column,
   ManyToMany,
   ManyToOne,
+  CreateDateColumn,
 } from "typeorm";
 import { Activity } from "./activityEntity";
 
@@ -14,11 +15,8 @@ export class Note {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "date", nullable: true })
-  date: string;
-
-  @Column({ type: "time", nullable: true })
-  time: string;
+  @CreateDateColumn({ name: "create_time" })
+  createTime: Date;
 
   @Column()
   content: string;
