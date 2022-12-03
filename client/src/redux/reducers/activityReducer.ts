@@ -36,9 +36,9 @@ const initialState:ActivityReducerState = {
     }
   );
   
-  export const createActivity = createAsyncThunk("createActivity", async (Activity: Activity) => {
+  export const createActivity = createAsyncThunk("createActivity", async (activity: Activity) => {
     const { id, createTime, endTime, type, intensity, noteId, userId } =
-      Activity;
+      activity;
     try {
       const response = await fetch("https://localhost:5000/api/Activities", {
         method: "POST",
@@ -85,11 +85,11 @@ const initialState:ActivityReducerState = {
     extraReducers: (builder) => {
       builder
         .addCase(getActivities.fulfilled, (state, action: PayloadAction<Activity>) => {
-          state = action.payload;
+          state.currentActivity = action.payload;
           return state;
         })
         .addCase(updateActivity.fulfilled, (state, action: PayloadAction<Activity>) => {
-          state.ActivityList.map((Activity) => {
+          state.activityList.map((Activity) => {
             if (Activity.id === action.payload.id) {
               Activity = action.payload;
               return Activity;
@@ -102,24 +102,19 @@ const initialState:ActivityReducerState = {
           return state;
         })
         .addCase(createActivity.fulfilled, (state, action: PayloadAction<Activity>) => {
-          if (state.currentActivity && state.currentActivity.role === "customer") {
+          // if (state.currentActivity && state.currentActivity.role === "customer") {
             state.currentActivity = action.payload;
-          } else if (state.currentActivity && state.currentActivity.role === "admin") {
-            state.ActivityList.push(action.payload);
-          }
+          // } else if (state.currentActivity && state.currentActivity.role === "admin") {
+          //   state.ActivityList.push(action.payload);
+          // }
           return state;
         })
         .addCase(deleteActivity.fulfilled, (state, action: PayloadAction<Activity>) => {
           return state;
         })
-        .addCase(login.fulfilled, (state, action: PayloadAction<Activity>) => {
-          state.currentActivity = action.payload;
-          console.log(action.payload);
-          return state;
-        });
+      
     },
   });
   
   export const ActivityReducer = ActivitySlice.reducer;
-  export const { logout } = ActivitySlice.actions;
   
