@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Note, noteReducerState } from "../../types/noteTypes";
+import { Note, NoteReducerState } from "../../types/noteTypes";
 
-const initialState:noteReducerState = {
+const initialState:NoteReducerState = {
   noteList:[],
-  currentnote:undefined
+  currentNote: undefined
   };
   
-  export const getActivities = createAsyncThunk("getActivities", async () => {
+  export const getNotes = createAsyncThunk("getNotes", async () => {
     try {
-      const data = await fetch("https://localhost:5000/api/Activities");
+      const data = await fetch("https://localhost:5000/api/Notes");
       let result = await data.json();
       return result;
     } catch (error: any) {
@@ -18,10 +18,10 @@ const initialState:noteReducerState = {
   
   export const updatenote = createAsyncThunk(
     "updatenote",
-    async (update: Partial<note>) => {
+    async (update: Partial<Note>) => {
       try {
         console.log(update);
-        const response = await fetch(`https://localhost:5000/api/Activities/`, {
+        const response = await fetch(`https://localhost:5000/api/Notes/`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -36,21 +36,20 @@ const initialState:noteReducerState = {
     }
   );
   
-  export const createnote = createAsyncThunk("createnote", async (note: note) => {
-    const { id, createTime, endTime, type, intensity, noteId, userId } =
+  export const createnote = createAsyncThunk("createnote", async (note: Note) => {
+    const { id, dateCreated, tags, content, activityId, userId } =
       note;
     try {
-      const response = await fetch("https://localhost:5000/api/Activities", {
+      const response = await fetch("https://localhost:5000/api/Notes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          createTime,
-          endTime,
-          type,
-          intensity,
-          noteId,
+          dateCreated,
+          tags,
+          content,
+          activityId,
           userId
         }),
       });
@@ -64,7 +63,7 @@ const initialState:noteReducerState = {
   
   export const deletenote = createAsyncThunk("deletenote", async (id: string) => {
     try {
-      const response = await fetch(`https://localhost:5000/api/Activities/${id}`, {
+      const response = await fetch(`https://localhost:5000/api/Notes/${id}`, {
         method: "DELETE",
       });
       const result = await response.json();
@@ -84,11 +83,11 @@ const initialState:noteReducerState = {
     },
     extraReducers: (builder) => {
       builder
-        .addCase(getActivities.fulfilled, (state, action: PayloadAction<note>) => {
-          state.currentnote = action.payload;
+        .addCase(getNotes.fulfilled, (state, action: PayloadAction<Note>) => {
+          state.currentNote = action.payload;
           return state;
         })
-        .addCase(updatenote.fulfilled, (state, action: PayloadAction<note>) => {
+        .addCase(updatenote.fulfilled, (state, action: PayloadAction<Note>) => {
           state.noteList.map((note) => {
             if (note.id === action.payload.id) {
               note = action.payload;
@@ -96,20 +95,20 @@ const initialState:noteReducerState = {
             }
             return state;
           });
-          if (state.currentnote && state.currentnote.id === action.payload.id) {
-            state.currentnote = action.payload;
+          if (state.currentNote && state.currentNote.id === action.payload.id) {
+            state.currentNote = action.payload;
           }
           return state;
         })
         .addCase(createnote.fulfilled, (state, action: PayloadAction<Note>) => {
           // if (state.currentnote && state.currentnote.role === "customer") {
-            state.currentnote = action.payload;
+            state.currentNote = action.payload;
           // } else if (state.currentnote && state.currentnote.role === "admin") {
           //   state.noteList.push(action.payload);
           // }
           return state;
         })
-        .addCase(deletenote.fulfilled, (state, action: PayloadAction<note>) => {
+        .addCase(deletenote.fulfilled, (state, action: PayloadAction<Note>) => {
           return state;
         })
       
