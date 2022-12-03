@@ -1,14 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Activity } from "../../types/activityTypes";
+import { Activity, ActivityReducerState } from "../../types/activityTypes";
 
-const initialState:Activity = {
-  id: 1,
-  createTime: new Date(),
-  endTime: "end date",
-  type: "exercise",
-  intensity: "medium",
-  noteId: 1,
-  userId: 2,
+const initialState:ActivityReducerState = {
+  activityList:[],
+  currentActivity:undefined
   };
   
   export const getActivities = createAsyncThunk("getActivities", async () => {
