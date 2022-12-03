@@ -1,18 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Activity } from "../../types/activityTypes";
 
-const initialState = {
-    ActivityList: [],
-    currentActivity: {
-      id: "630a1ec68730e0a256ecf8dc",
-      Activityname: "dragonaslayer1x",
-      age: 19,
-      weight: 75,
-      firstname: "jason",
-      lastname: "admin",
-      email: "admin@gmail.com",
-      password: "$2b$10$kBbRpmy2o4FLznWUv9qXLOvGsewlrKmLqLcJxnABHCJlvAOPEO7Li",
-      role: "admin",
-    },
+const initialState:Activity = {
+  id: 1,
+  createTime: new Date(),
+  endTime: "end date",
+  type: "exercise",
+  intensity: "medium",
+  noteId: 1,
+  userId: 2,
   };
   
   export const getActivities = createAsyncThunk("getActivities", async () => {
@@ -46,7 +42,7 @@ const initialState = {
   );
   
   export const createActivity = createAsyncThunk("createActivity", async (Activity: Activity) => {
-    const { firstname, lastname, email, password, role, age, weight, Activityname } =
+    const { id, createTime, endTime, type, intensity, noteId, userId } =
       Activity;
     try {
       const response = await fetch("https://localhost:5000/api/Activities", {
@@ -55,14 +51,12 @@ const initialState = {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstname: firstname,
-          lastname: lastname,
-          password: password,
-          email: email,
-          role: role,
-          age: age,
-          Activityname: Activityname,
-          weight: weight,
+          createTime,
+          endTime,
+          type,
+          intensity,
+          noteId,
+          userId
         }),
       });
       const result = await response.json();
@@ -91,15 +85,12 @@ const initialState = {
     name: "ActivityReducer",
     initialState: initialState,
     reducers: {
-      logout: (state) => {
-        state.currentActivity = undefined;
-        localStorage.removeItem("token");
-      },
+      
     },
     extraReducers: (builder) => {
       builder
-        .addCase(getActivities.fulfilled, (state, action: PayloadAction<Activity[]>) => {
-          state.ActivityList = action.payload;
+        .addCase(getActivities.fulfilled, (state, action: PayloadAction<Activity>) => {
+          state = action.payload;
           return state;
         })
         .addCase(updateActivity.fulfilled, (state, action: PayloadAction<Activity>) => {
