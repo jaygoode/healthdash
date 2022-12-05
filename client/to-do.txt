@@ -1,0 +1,1 @@
+-provider in index.tsx bugs the rendering of app
