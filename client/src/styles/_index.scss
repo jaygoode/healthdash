@@ -2,8 +2,9 @@
 // @use'./pages/Overview';
 
 @use './components/_Nav';
-@use './variables/colors';
-@use './_mixins';
+@use './components/_InfoSquare';
+@import './variables/colors';
+@import './_mixins';
 
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
 
@@ -47,8 +48,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   color: white;
-  // background-color: rgb(93, 55, 182);
-  background-image: linear-gradient(rgb(33, 38, 110), rgba(35, 3, 180, 0.842));
+  background-color: $primary-clr-dark;
 }
 
 /* A elements that don't have a class get default styles */

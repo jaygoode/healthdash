@@ -1,0 +1,7 @@
+@import '../_mixins.scss';
+@import '../variables/colors';
+
+.info-square{
+    background-color: $primary-clr-medium;
+    @include flexCenterX(column)
+}

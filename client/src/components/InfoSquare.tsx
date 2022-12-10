@@ -4,7 +4,7 @@
 */
 
 const InfoSquare = () => {
-  return <div>InfoSquare</div>;
+  return <div className="info-square">InfoSquare</div>;
 };
 
 export default InfoSquare;
