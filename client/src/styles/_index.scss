@@ -2,7 +2,8 @@
 // @use'./pages/Overview';
 
 @use './components/_Nav';
-// @use './variables/colors';
+@use './variables/colors';
+@use './_mixins';
 
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
 

@@ -1,3 +1,4 @@
+
 @mixin flexCenterXY{
     display: flex;
     align-items: center;
@@ -5,6 +6,8 @@
 }
 
 @mixin listStyle{
-    text-decoration: none;
-    list-style: none;
+    a{
+        text-decoration: none;
+        list-style: none;
+    }
 }

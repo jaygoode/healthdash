@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import "../styles/components/Nav.scss";
 
 const Navbar = () => {
   const [settingsModule, setSettingsModule] = useState(false);
 
   return (
     <div>
-      <ul className="nav">
+      <ul className="nav-list">
         <Link to="/">Home</Link>
         <Link to="/overview">Overview</Link>
         <li>

@@ -1,7 +1,5 @@
-@use '../_mixins.scss';
+@import '../_mixins.scss';
 
 .nav-list{
-    // @include listStyle()
-    font-size: 5em;
-    background-color: blue;
+    @include listStyle()
 }
