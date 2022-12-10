@@ -1,5 +1,20 @@
 @import '../_mixins.scss';
+@import '../variables/colors';
 
 .nav-list{
-    @include listStyle()
+    @include listStyle();
+    @include flexCenterXY();
+    background-color: $primary-clr-medium;
+    padding: 0;
+    margin: 0;
+
+    li{
+        list-style-type: none;
+        margin: 0 1em;
+    }
+    button{
+        border-style: none;
+        background-color: transparent;
+        padding:0;
+    }
 }

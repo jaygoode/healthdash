@@ -7,8 +7,12 @@ const Navbar = () => {
   return (
     <div>
       <ul className="nav-list">
-        <Link to="/">Home</Link>
-        <Link to="/overview">Overview</Link>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/overview">Overview</Link>
+        </li>
         <li>
           <button
             onClick={() => {
