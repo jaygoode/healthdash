@@ -8,7 +8,7 @@ import activitiesRouter from "./routers/activitiesRouter";
 dotenv.config({ path: ".env" });
 const app = express();
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env["PORT"] || 5000);
 
 app.use(cors());
 

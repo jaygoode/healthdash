@@ -38,9 +38,15 @@ export class User {
   @Column()
   role: "customer" | "admin";
 
-  @ManyToOne(() => Note, (note) => note.userId, { cascade: true })
-  noteId: Note;
+  @ManyToOne(() => Note, (note) => note.userId, {
+    cascade: true,
+    nullable: true,
+  })
+  noteId: Note["id"];
 
-  @ManyToOne(() => Activity, (activity) => activity.userId, { cascade: true })
-  activityId: Activity;
+  @ManyToOne(() => Activity, (activity) => activity.userId, {
+    cascade: true,
+    nullable: true,
+  })
+  activityId: Activity["id"];
 }

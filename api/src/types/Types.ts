@@ -8,8 +8,8 @@ export interface User {
   age: number;
   username: string;
   role: "customer" | "admin";
-  noteId?: number;
-  activityId?: number;
+  noteId: number;
+  activityId: number;
 }
 
 export interface Note {

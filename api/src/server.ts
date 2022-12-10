@@ -3,6 +3,7 @@ import app from "./app";
 import { SERVER_URI } from "./util/secrets";
 import pool from "./pool";
 import { AppDataSource } from "./data-source";
+import dotenv from "dotenv";
 
 const serverUrl = SERVER_URI;
 

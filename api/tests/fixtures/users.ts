@@ -10,6 +10,8 @@ export const user1: User = {
   age: 44,
   weight: 56,
   role: "admin",
+  noteId: 1,
+  activityId: 1,
 };
 
 export const user2: User = {
@@ -22,4 +24,6 @@ export const user2: User = {
   age: 34,
   weight: 64,
   role: "admin",
+  noteId: 1,
+  activityId: 1,
 };
