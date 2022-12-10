@@ -1,7 +1,7 @@
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import InfoContainer from "./components/InfoContainer";
-import Overview from "./components/overview";
+import Overview from "./components/Overview";
 
 function App() {
   return (
