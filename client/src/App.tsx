@@ -7,6 +7,10 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <Routes>
+        <Route path="" element={<InfoContainer />} />
+        <Route path="overview" element={<Overview />} />
+      </Routes>
     </BrowserRouter>
   );
 }
