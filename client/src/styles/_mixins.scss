@@ -1,10 +1,10 @@
 @import './variables/colors';
 
-@mixin flexCenterXY($flex-direction){
+@mixin flexCenterX($flex-direction){
     display: flex;
     flex-direction: $flex-direction;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
 }
 
 @mixin listStyle{

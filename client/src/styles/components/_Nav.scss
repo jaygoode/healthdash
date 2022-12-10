@@ -2,18 +2,26 @@
 @import '../variables/colors';
 
 .nav-list{
-    @include listStyle();
-    @include flexCenterXY(column);
-    background-color: $primary-clr-medium;
-    padding: 0;
-    margin: 0;
-
+    .hamburger{
+        position: fixed;
+        left: 0.2em;
+        top: 0.2em;
+        z-index: 10;
+        cursor: pointer;
+        background-color: $primary-clr-light;
+        border-style: none;
+        border-radius: 5px;
+        @include flexCenterX(column)
+    }
     .menuNav {
+        @include listStyle();
+        @include flexCenterX(column);
+        padding: 0;
+        margin: 0;
+        background-color: $primary-clr-medium;
         overflow-y: scroll;
-        list-style: none;
         position: fixed;
         top: 0;
-        background: darkcyan;
         left: 0;
         bottom: 0;
         height: 100vh;
@@ -27,16 +35,16 @@
       }
     li{
         list-style-type: none;
-        margin: 0 1em;
+        margin: 0.5em 1em;
         @include hoverLift();
         a{
             color:$primary-clr-light;
         }
-    }
-    button{
-        color:$primary-clr-light;
-        border-style: none;
-        background-color: transparent;
-        padding:0;
+        button{
+            color:$primary-clr-light;
+            border-style: none;
+            background-color: transparent;
+            padding:0;
+        }
     }
 }

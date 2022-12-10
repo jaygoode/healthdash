@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { MdClose } from "react-icons/md";
+import { FiMenu } from "react-icons/fi";
 
 const Navbar = () => {
   const [settingsModule, setSettingsModule] = useState(false);
@@ -15,7 +17,9 @@ const Navbar = () => {
 
   return (
     <nav className="nav-list">
-      <button onClick={handleToggle}>{navbarOpen ? "Close" : "Open"}</button>
+      <button className="hamburger" onClick={handleToggle}>
+        {navbarOpen ? <MdClose /> : <FiMenu />}
+      </button>
       <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
         <li>
           <Link to="/" onClick={() => closeMenu()}>
