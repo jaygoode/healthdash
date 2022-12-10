@@ -1,6 +1,8 @@
+@import './variables/colors';
 
-@mixin flexCenterXY{
+@mixin flexCenterXY($flex-direction){
     display: flex;
+    flex-direction: $flex-direction;
     align-items: center;
     justify-content: center;
 }
@@ -10,5 +12,14 @@
         text-decoration: none;
         list-style: none;
         list-style-type: none;
+    }
+}
+
+@mixin hoverLift {
+    transition: transform 350ms ease-in-out;
+    &:hover,
+    &:focus{
+        color: $primary-clr-light;
+        transform: scale(1.05);
     }
 }

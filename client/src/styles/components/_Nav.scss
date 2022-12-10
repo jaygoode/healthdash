@@ -3,16 +3,38 @@
 
 .nav-list{
     @include listStyle();
-    @include flexCenterXY();
+    @include flexCenterXY(column);
     background-color: $primary-clr-medium;
     padding: 0;
     margin: 0;
 
+    .menuNav {
+        overflow-y: scroll;
+        list-style: none;
+        position: fixed;
+        top: 0;
+        background: darkcyan;
+        left: 0;
+        bottom: 0;
+        height: 100vh;
+        width: 0;
+        overflow: hidden;
+        max-width: 290px;
+        z-index: 9;
+      }
+      .menuNav.showMenu {
+        width: 100%;
+      }
     li{
         list-style-type: none;
         margin: 0 1em;
+        @include hoverLift();
+        a{
+            color:$primary-clr-light;
+        }
     }
     button{
+        color:$primary-clr-light;
         border-style: none;
         background-color: transparent;
         padding:0;
