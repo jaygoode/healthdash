@@ -1,0 +1,10 @@
+@mixin flexCenterXY{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin listStyle{
+    text-decoration: none;
+    list-style: none;
+}
