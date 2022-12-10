@@ -1,8 +1,13 @@
+import { Routes, BrowserRouter, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import InfoContainer from "./components/InfoContainer";
+import Overview from "./components/overview";
+
 function App() {
   return (
-    <div className="App">
-      <h1>hello dashApp</h1>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+    </BrowserRouter>
   );
 }
 

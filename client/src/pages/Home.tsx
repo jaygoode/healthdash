@@ -1,7 +1,6 @@
 import React from "react";
 import InfoContainer from "../components/InfoContainer";
-import InfoSquare from "../components/InfoSquare";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
