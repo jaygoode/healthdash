@@ -6,13 +6,19 @@ import { user1, user2 } from "../fixtures/users";
 import UserServices from "../../src/services/UserServices";
 
 async function createUser() {
-  const user = new User({
+  const user = {
+    id: 1,
     firstname: "johnny",
     lastname: "nylund",
     email: "johnny@gmail.com",
     password: "@Aa123",
     role: "admin",
-  });
+    username: "jay",
+    weight: 95,
+    age: 23,
+    noteId: 2,
+    activityId: 1,
+  };
   return await UserServices.createOne(user);
 }
 
